@@ -1,6 +1,6 @@
 #!/bin/bash
 systemctlFunc() {
-wget -o - https://github.com/konan01/serverInstallSh/blob/master/homeassistant.service
+wget -o - https://raw.githubusercontent.com/konan01/serverInstallSh/master/homeassistant.service
 mv homeassistant.service /etc/systemd/system/
 sudo systemctl enable homeassistant.service
 sudo service homeassistant start
@@ -18,7 +18,7 @@ systemctlFunc
 }
 
 cd ~
-sudo add-apt-repository ppa:deadsnakes/ppa 
+sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt-get update
 sudo apt-get install -y python3.10
 apt-get install -y python3.10-dev python3.10-venv bluez libffi-dev libssl-dev libjpeg-dev zlib1g-dev autoconf build-essential libopenjp2-7 libtiff5 libturbojpeg0-dev tzdata ffmpeg liblapack3 liblapack-dev libatlas-base-dev
