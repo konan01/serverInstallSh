@@ -1,0 +1,14 @@
+[Unit]
+Description=Open source home automation that puts local control and privacy first
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment="LC_ALL=C.UTF-8"
+Environment="LANG=C.UTF-8"
+Type=exec
+User=homeassistant
+ExecStart=/home/homeassistant/HA/venv/bin/hass
+
+[Install]
+WantedBy=multi-user.target
