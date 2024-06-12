@@ -41,6 +41,3 @@ volumes:
   gpg_volume:
   jwt_volume:
 
-networks:
-    default:
-        driver: host
