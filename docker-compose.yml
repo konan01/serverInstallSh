@@ -1,0 +1,46 @@
+version: "3"
+services:
+  adguardhome:
+    image: adguard/adguardhome
+    container_name: adguardhome
+    volumes:
+      - adguardhome:/opt/adguardhome/conf
+      - adguardhome:/opt/adguardhome/work
+    ports:
+        # DNS
+        - 53:53
+        - 67:67
+        - 68:68
+        - 5600:3000/tcp
+        - 853:853/udp
+        - 784:784/udp
+        - 8853:8853/udp
+        - 443:443/tcp
+        - 5443:5443/tcp
+        - 5443:5443/udp
+          # # DHCP server
+          # - 67:67/udp
+          # - 68:68/tcp
+          # - 68:68/udp
+          # # HTTPS/DNS-over-HTTPS
+          # - 443:443/tcp
+          # # DNS-over-TLS
+          # - 853:853/tcp
+          # # DNS-over-QUIC
+          # - 784:784/udp
+          # # DNSCrypt
+          # - 5443:5443/tcp
+          # - 5443:5443/udp
+          # # WebUI
+          # - 3000:3000/tcp
+    restart: unless-stopped
+
+volumes:
+  postgres_db:
+  adguardhome:
+  gpg_volume:
+  jwt_volume:
+
+networks:
+    default:
+        driver: host
