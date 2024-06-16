@@ -41,8 +41,8 @@ services:
     container_name: mosquitto
     network_mode: "host"
     volumes:
-      - mosquitto/config:/mosquitto/config/mosquitto.conf
-      - mosquitto/log:/mosquitto/log
+      - mosquitto:/mosquitto/config/mosquitto.conf
+      - mosquitto:/mosquitto/log
     ports:
         - 1883:1883
 
