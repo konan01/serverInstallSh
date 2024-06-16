@@ -1,8 +1,8 @@
-version: "3"
 services:
   adguardhome:
     image: adguard/adguardhome
     container_name: adguardhome
+    network_mode: "host"
     volumes:
       - adguardhome:/opt/adguardhome/conf
       - adguardhome:/opt/adguardhome/work
@@ -36,9 +36,17 @@ services:
           # - 3000:3000/tcp
     restart: unless-stopped
 
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    network_mode: "host"
+    volumes:
+      - mosquitto/config:/mosquitto/config/mosquitto.conf
+      - mosquitto/log:/mosquitto/log
+    ports:
+        - 1883:1883
+
 volumes:
-  postgres_db:
   adguardhome:
-  gpg_volume:
-  jwt_volume:
+  mosquitto:
 
